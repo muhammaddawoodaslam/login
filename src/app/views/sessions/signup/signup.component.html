@@ -1,0 +1,82 @@
+<div class="card o-hidden" [@animate]="{value:'*',params:{y:'120px',opacity:'0',delay:'100ms', duration: '400ms'}}">
+  <div class="row">
+    <div class="col-md-6 text-center " style="background-size: cover;background-image: url(./assets/images/photo-long-3.jpg)">
+      <div class="pl-3 auth-right">
+        <div class="auth-logo text-center mt-4">
+          <img src="assets/images/logo.png" alt="">
+        </div>
+        <div class="flex-grow-1"></div>
+        <div class="w-100 mb-4">
+          <button class="btn btn-outline-primary btn-outline-email btn-block btn-icon-text btn-rounded" routerLink="/sessions/signin">
+            <i class="i-Mail-with-At-Sign"></i>
+            {{'signEmail' | translate}}
+          </button>
+          <button class="btn btn-outline-primary btn-outline-google btn-block btn-icon-text btn-rounded" onclick="location.href='http://www.everythink.ai'">
+            <i class="i-arrow-left"></i>
+            {{'backHome' | translate}}
+          </button>
+          <!-- <button class="btn btn-outline-primary btn-outline-facebook btn-block btn-icon-text btn-rounded">
+            <i class="i-Facebook-2"></i>
+            Sign in with Facebook
+          </button> -->
+        </div>
+        <div class="flex-grow-1"></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-4" *ngIf="!sended">
+
+        <h1 class="mb-3 text-18">{{'signUp' | translate}}</h1>
+        <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+          <div class="form-group">
+            <label for="first_name">{{'firstName' | translate}}</label>
+            <input id="first_name" class="form-control form-control-rounded" type="text" pattern="[a-zA-Z ]*" [ngClass]="{'border border-danger' : !signUpForm.controls.first_name.valid}" formControlName="first_name">
+          </div>
+          <div class="form-group">
+            <label for="last_name">{{'lastName' | translate}}</label>
+            <input id="last_name" class="form-control form-control-rounded" type="text" pattern="[a-zA-Z ]*" [ngClass]="{'border border-danger' : !signUpForm.controls.last_name.valid}" formControlName="last_name">
+          </div>
+          <div class="form-group">
+            <label for="phone">{{'phone' | translate}}</label>
+            <input id="phone" class="form-control form-control-rounded" type="phone" [ngClass]="{'border border-danger' : !signUpForm.controls.phone.valid}" formControlName="phone">
+          </div>
+          <div class="form-group">
+            <label for="email">{{'email' | translate}}</label>
+            <input id="email" class="form-control form-control-rounded" type="email" [ngClass]="{'border border-danger' : !signUpForm.controls.email.valid}" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="password">{{'password' | translate}}</label>
+            <input id="password" class="form-control form-control-rounded" type="password" [ngClass]="{'border border-danger' : !signUpForm.controls.password.valid}" pattern="^[a-zA-Z]\w{3,14}$" formControlName="password"> 
+          </div>
+          <button class="btn btn-primary btn-block btn-rounded mt-3">{{'signUp' | translate}}</button>
+        </form>
+      </div>
+      <div class="p-4" *ngIf="sended && !newPhone">
+          <h1 class="mb-3 text-18">{{'validatePhone' | translate}}</h1>
+          <form [formGroup]="validateForm" (ngSubmit)="validateCode()" class="validateForm">
+            <div class="form-group">
+              <label for="code">{{'code' | translate}}</label>
+              <input id="code" class="form-control form-control-rounded" type="number" min="100000" max="500000" formControlName="code">
+            </div>
+            <button class="btn btn-primary btn-block btn-rounded mt-3" >{{'validate' | translate}}</button>
+          </form>
+          <span class="missCode">{{'missCode' | translate}} <a  (click)="reSend()"> {{'code' | translate}}</a>?</span>
+          <br/>
+          <span class="missCode changeNum"><a (click)="changePhone()"> {{'changeNum' | translate}}</a></span>
+        </div>
+        <div class="p-4" *ngIf="newPhone">
+          <h1 class="mb-3 text-18">{{'changeNum' | translate}}</h1>
+          <form [formGroup]="changePhoneForm" (ngSubmit)="sendNewPhone()" class="validateForm">
+            <div class="form-group">
+              <label for="code">{{'phone' | translate}}</label>
+              <input id="code" class="form-control form-control-rounded" type="phone"  formControlName="newPhone">
+            </div>
+            <button class="btn btn-primary btn-block btn-rounded mt-3" >{{'change' | translate}}</button>
+          </form>
+        </div>
+        <alert></alert>
+    </div>
+  </div>
+</div>

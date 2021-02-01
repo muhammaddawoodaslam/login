@@ -1,0 +1,786 @@
+<div class="breadcrumb">
+    <h1>{{ "matches" | translate }}</h1>
+</div>
+
+<div class="separator-breadcrumb border-top">
+
+
+  <div class="ml-auto mr-auto card-w"  id="question1">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        Personal Assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + questionData?.workout.question.background + ')'
+        }"
+      >
+        <audio autoplay style="height: 0px;">
+          <source [src]="questionData?.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border">
+            {{ questionData?.workout.question.name }}
+          </p>
+        </div>
+        <div class="avatar-img">
+          <img [src]="questionData?.workout.question.assistant" alt="" />
+        </div>
+      </div>
+      <div class="card-footer">
+        
+        <div *ngFor="let btnDta of questionData?.workout.views">
+          <div *ngIf="btnDta.type == 'audio'">
+            <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
+            <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
+            <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
+            <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+            <div>
+            <audio *ngIf="!isRecording && blobUrl"  controls>
+              <source [src]="blobUrl" type="audio/webm">
+            </audio>
+            </div>
+          </div>
+          <button
+            class="btn mx-2 btn-custom mb-2"
+            [id]="btnDta.id"
+            [type]="btnDta.type"
+            [ngStyle]="{
+              background: btnDta.buttonColor,
+              color: btnDta.textColor
+            }"
+            *ngIf="btnDta.type != 'audio'"
+            (click)="onSubmit(questionData , btnDta)"
+          >
+            {{ btnDta.text }}
+          </button>
+        </div>
+        <br />
+        <!-- <button class="btn mx-2 btn-custom our-custom">
+          Yes
+        </button>
+        <button class="btn mx-2 btn-custom our-custom-2">
+          No
+        </button> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- question1 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question1'"  id="question1">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        Personal Assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question1.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question1.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question1.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question1.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn mx-2 btn-custom mb-2" [id]="btnDta.id" [type]="btnDta.type" [ngStyle]="{
+            background: btnDta.buttonColor,
+            color: btnDta.textColor
+          }"
+          *ngFor="let btnDta of question1?.data.workout.views"
+          (click)="showNext('question2')"
+        >
+          {{ btnDta.text }}
+        </button>
+        <br />
+        <!-- <button class="btn mx-2 btn-custom our-custom">
+          Yes
+        </button>
+                <button class="btn mx-2 btn-custom our-custom-2">
+          No
+        </button> -->
+      </div>
+    </div>
+
+  <!-- question2 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question2'" id="question2">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question2.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question2.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border">
+            {{ question2.data.workout.question.name }}
+          </p>
+        </div>
+        <div class="avatar-img">
+          <img [src]="question2.data.workout.question.assistant" alt="" />
+        </div>
+      </div>
+      <div class="card-footer">
+        <input type="time" id="" value="hh:mm" class="mb-2" /><br />
+        <button class="btn mx-2 btn-custom mb-2" (click)="showNext('question3')">
+          Next
+        </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- question3 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question3'" id="question3">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question3.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question3.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border">
+            {{ question3.data.workout.question.name }}
+          </p>
+        </div>
+        <div class="avatar-img">
+          <img [src]="question3.data.workout.question.assistant" alt="" />
+        </div>
+      </div>
+      <div class="card-footer">
+        <input type="date" id="" value="yyyy/mm/dd" class="mb-2" /><br />
+        <button class="btn mx-2 btn-custom mb-2" (click)="showNext('question4')">
+          Next
+        </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- question4 -->
+  <div class="ml-auto mr-auto card-w  " *ngIf="idTextShow == 'question4'" id="question5">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <input
+        type="text"
+        class="form-control " *ngIf="false"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Search Nearest Location"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        type="text"
+        #search
+      />
+      <div
+        class="card-body map-card"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question5.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question5.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+                <div class="btm-right-in">
+                    <p class="triangle-border maptext">
+                        {{ question5.data.workout.question.name }}
+                    </p>
+                </div>
+
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+          <agm-marker
+            [latitude]="latitude"
+            [longitude]="longitude"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
+          ></agm-marker>
+        </agm-map>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary next-btn" (click)="showNext('question5')">
+          NEXT
+        </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- question5 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question5'" id="question5">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question5.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question5.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border">
+            {{ question5.data.workout.question.name }}
+          </p>
+        </div>
+        <div class="avatar-img">
+          <img [src]="question5.data.workout.question.assistant" alt="" />
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <img
+            class="img-box"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5eblg2MKT4xnF0s4ulFOD4HA8uLbkDG6yPg&usqp=CAU"
+            alt=""
+          />
+        </div>
+        <button class="btn btn-primary next-btn" (click)="open(modalLong)">
+          NEXT
+        </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- question6 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question6'" id="question6">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question6.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question6.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question6.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question6.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <div class="form-group">
+                        {{ rangeValue }}
+                        <input type="range" class="form-control-range" [(ngModel)]="rangeValue" id="formControlRange" />
+                    </div>
+                </div>
+                <button class="btn btn-primary next-btn">NEXT</button>
+            </div>
+        </div>
+        <button class="btn btn-primary next-btn" (click)="showNext('question7')">NEXT</button>
+      </div>
+    <!-- </div> -->
+
+  <!-- question7 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question7'" id="question7">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question7.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question7.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question7.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question7.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="2" id="comment"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary next-btn">NEXT</button>
+            </div>
+        </div>
+        <button class="btn btn-primary next-btn"  (click)="showNext('question8')">NEXT</button>
+      </div>
+    <!-- </div> -->
+
+  <!-- question8 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question8'" id="question8">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question8.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question8.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question8.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question8.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <div class="form-group">
+                        <select class="form-control" id="sel1">
+              <option><span>Option 1</span></option>
+              <option><span>Option 2</span></option>
+              <option><span>Option 3</span></option>
+              <option><span>Option 4</span></option>
+            </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary next-btn">NEXT</button>
+            </div>
+        </div>
+        <button class="btn btn-primary next-btn"  (click)="showNext('question9')">NEXT</button>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+  <!-- question9 -->
+      <div class="ml-auto mr-auto card-w  " *ngIf="idTextShow == 'question9'" id="question8">
+        <div class="card mb-4 o-hidden">
+            <div class="card-header custom-card-header">
+                personal assistant
+            </div>
+            <div class="card-body card-main-bg" [ngStyle]="{
+              'background-image':
+                'url(' + question8.data.workout.question.background + ')'
+            }">
+                <audio autoplay style="height: 0px;">
+              <source [src]="question8.data.workout.question.audio" />
+              Your browser does not support the audio element.
+            </audio>
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question8.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question8.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="">
+                    <button class="btn audio-btn audio-upload mr-3" (click)="uploadAudio(audioModal)"> </button>
+                    <button class="btn audio-record audio-btn"></button>
+                </div>
+
+                <div>
+                    <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
+                    <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
+                    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
+                    <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+                    <div>
+                        <audio *ngIf="!isRecording && blobUrl" controls>
+                         <source [src]="blobUrl" type="audio/webm">
+                        </audio>
+                    </div>
+                </div>
+              </div>
+            <button class="btn btn-primary next-btn"  (click)="showNext('question10')">NEXT</button>
+          </div>
+        </div>
+    <!-- </div> -->
+
+  <!-- question10 -->
+ <div class="ml-auto mr-auto card-w  " *ngIf="idTextShow == 'question10'" id="question5">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <input
+        type="text"
+        class="form-control " *ngIf="false"
+        (keydown.enter)="$event.preventDefault()"
+        placeholder="Search Nearest Location"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        type="text"
+        #searchElementRef
+      />
+      <div
+        class="card-body map-card"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question5.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question5.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+                <div class="btm-right-in">
+                    <p class="triangle-border maptext">
+                        {{ question5.data.workout.question.name }}
+                    </p>
+                </div>
+
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+          <agm-marker
+            [latitude]="latitude"
+            [longitude]="longitude"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
+          ></agm-marker>
+        </agm-map>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary next-btn"  (click)="showNext('question11')">
+          NEXT
+        </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- question11 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question11'" id="question11">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question11.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question11.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border">
+            {{ question11.data.workout.question.name }}
+          </p>
+        </div>
+        <div class="avatar-img">
+          <img [src]="question5.data.workout.question.assistant" alt="" />
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <img
+            class="img-box"
+            src="https://www.bmvi.de/SiteGlobals/Bilder/default-video-image.png?__blob=normal&size=810w"
+            alt=""
+          />
+        </div>
+        <button
+          class="btn btn-primary next-btn"
+          (click)="openvideo(modalLongVideo)"
+        >
+          NEXT
+        </button>
+            </div>
+        </div>
+    </div>
+  <!-- </div> -->
+  <!-- question 12 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question12'">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question12.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question12.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question12.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question12.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <tag-input name="myfile" *ngIf="isSelectItem" [formControl]="tagsCtrl1" (onSelect)="onSelect($event)" [modelAsStrings]="true" theme="primary">
+                </tag-input>
+                <button class="btn mx-2 btn-custom mb-2" style="width: 50px;" *ngIf="isSelectItem" (click)="open(modalLong1)">
+          <i class="text-20 i-Add"></i></button
+        ><br />
+        <button
+          class="btn mx-2 btn-custom mb-2"
+          *ngIf="!isSelectItem"
+          (click)="open(modalLong1)"
+        >
+          Select</button
+        ><br />
+        <button class="btn mx-2 btn-custom mb-2" (click)="showNext('question13')">
+          Next
+        </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- question 13 -->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question13'">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question13.data.workout.question.background + ')'
+        }">
+                <audio autoplay style="height: 0px;">
+          <source [src]="question13.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+                <div class="btm-right-in">
+                    <p class="triangle-border">
+                        {{ question13.data.workout.question.name }}
+                    </p>
+                </div>
+                <div class="avatar-img">
+                    <img [src]="question13.data.workout.question.assistant" alt="" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn mx-2 btn-custom mb-2" [id]="btnDta.id" [type]="btnDta.type" [ngStyle]="{
+            background: btnDta.buttonColor,
+            color: btnDta.textColor
+          }"
+          *ngFor="let btnDta of question13?.data.workout.views"
+          (click)="showNext('question14')"
+        >
+          {{ btnDta.text }}
+        </button>
+        <br />
+      </div>
+    </div>
+  </div>
+  <!-- question 14 google map-->
+  <div class="ml-auto mr-auto card-w " *ngIf="idTextShow == 'question14'">
+    <div class="card mb-4 o-hidden">
+      <div class="card-header custom-card-header">
+        personal assistant
+      </div>
+      <div
+        class="card-body card-main-bg"
+        [ngStyle]="{
+          'background-image':
+            'url(' + question14.data.workout.question.background + ')'
+        }"
+      >
+        <audio autoplay style="height: 0px;">
+          <source [src]="question14.data.workout.question.audio" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <div class="btm-right-in">
+          <p class="triangle-border maptext">
+            {{ question14.data.workout.question.name }}
+          </p>
+        </div>
+
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+          <agm-marker
+            [latitude]="latitude"
+            [longitude]="longitude"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
+          ></agm-marker>
+        </agm-map>
+      </div>
+      <div class="card-footer">
+        <button
+          class="btn mx-2 btn-custom mb-2"
+          [id]="btnDta.id"
+          [type]="btnDta.type"
+          [ngStyle]="{
+            background: btnDta.buttonColor,
+            color: btnDta.textColor
+          }"
+          *ngFor="let btnDta of question14?.data.workout.views"
+        >
+          {{ btnDta.text }}
+        </button>
+                <br />
+                <button class="btn mx-2 btn-custom our-custom">
+          Yes
+        </button>
+                <button class="btn mx-2 btn-custom our-custom-2">
+          No
+        </button>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
+
+<ng-template #modalLong1 let-modal>
+    <div class="modal-body">
+        <table class="table table-hover">
+            <tbody>
+                <tr *ngFor="let item of [1, 2, 3]">
+                    <td (click)="onAddItem()">
+                        Mark
+                        <br /> marks
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <tag-input name="myfile" [formControl]="tagsCtrl1" (onSelect)="onSelect($event)" [modelAsStrings]="true" theme="primary">
+    </tag-input>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('ok'); saveItems()">
+      Submit
+    </button>
+        <button type="button" class="btn btn-outline-light" (click)="modal.close('ok')">
+      Cancel
+    </button>
+    </div>
+</ng-template>
+
+<ng-template #modalLong let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">upload image</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="mb-3">
+      <input type="file" id="myfile" name="myfile"  #file type="file" accept='image/*' (change)="preview(file.files)"/>
+    </div>
+    <div>
+      <img
+        class="modl-img"
+        [src]="imgURL || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5eblg2MKT4xnF0s4ulFOD4HA8uLbkDG6yPg&usqp=CAU'"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark btn-rounded modal-btn2"
+      (click)="modal.close('ok');showNext('question6')"
+    >
+      upload
+    </button>
+    </div>
+</ng-template>
+
+<ng-template #modalLongVideo let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Upload Video</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div>
+      <img
+        class="modl-img"
+        src="https://www.bmvi.de/SiteGlobals/Bilder/default-video-image.png?__blob=normal&size=810w"
+        alt=""
+      />
+    </div>
+  <!-- </div> -->
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark btn-rounded modal-btn2"
+      (click)="modal.close('ok');showNext('question12')"
+    >
+      upload
+    </button>
+    </div>
+</ng-template>
+
+<ng-template #audioModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Upload Audio</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="mb-3"> 
+            <input type="file" id="myfile" name="myfile" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btn-rounded modal-btn2" (click)="modal.close('ok')">
+    upload
+  </button>
+    </div> 
+</ng-template>

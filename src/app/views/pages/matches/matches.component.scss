@@ -1,0 +1,205 @@
+    .card-main-bg {
+        width: 500px;
+        height: 600px;
+        background-position: center;
+        background-size: cover;
+        background-repeat-x: no-repeat;
+        overflow: hidden;
+    }
+    
+    .card-w {
+        width: 500px;
+    }
+    
+    .avatar-img img {
+        max-width: 280px;
+        margin-top: 24px;
+    }
+    
+    .avatar-img {
+        text-align: right;
+    }
+    
+    .triangle-border {
+        position: relative;
+        padding: 15px;
+        border: 2px solid gray;
+        color: #333;
+        background: #fff;
+        /* css3 */
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        width: 250px;
+        margin: 0 auto;
+    }
+    
+    .triangle-border:before {
+        content: "";
+        position: absolute;
+        bottom: -19px;
+        right: 40px;
+        border-width: 19px 20px 0;
+        border-style: solid;
+        border-color: gray transparent;
+        display: block;
+        width: 0;
+    }
+    /* creates the smaller  triangle */
+    
+    .triangle-border:after {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        right: 43px;
+        border-width: 16px 17px 0;
+        border-style: solid;
+        border-color: #fff transparent;
+        display: block;
+        width: 0;
+    }
+    
+    agm-map {
+        height: 450px;
+    }
+    
+    .map-card {
+        padding: 0px;
+    }
+    
+    .maptext {
+        position: absolute;
+        z-index: 2;
+        margin-left: 7rem;
+        margin-top: 1rem;
+    }
+    
+    .img-box {}
+    
+    .next-btn {
+        margin-top: 10px;
+        background-color: skyblue;
+    }
+    
+    .modl-img {
+        margin: 0 auto;
+        width: 100%;
+        max-height: 300px;
+    }
+    
+    .modal-btn1 { 
+        width: 100px;
+        background-color: white;
+        border-radius: 5px;
+        margin-left: 16px;
+        margin-top: 25px;
+        padding: 0;
+        height: 25px;
+    }
+    
+    .modal-btn2 {
+        margin-right: 224px;
+        background-color: tomato;
+    }
+    
+    // n css
+    .card-footer {
+        text-align: center;
+    }
+    
+    .btn-custom {
+        padding: 5px 16px;
+        width: 105px;
+    }
+    
+    .our-custom {
+        background-color: #d199e4 !important;
+        color: #fff;
+    }
+    
+    .our-custom-2 {
+        background: #b0d88c !important;
+        color: #fff
+    }
+    
+    .custom-card-header {
+        font-size: 18px;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: #444242;
+    }
+    
+    .dp-btn-custom {
+        background: #fff;
+        color: #000;
+    }
+    
+    ::ng-deep .ng2-tag-input {
+        border-bottom: 0px solid gray !important;
+    }
+    
+    ::ng-deep .ng2-tag-input.ng-tns-c146-0.primary.ng2-tag-input--focusedt {
+        border-bottom: 0px solid gray !important;
+    }
+    
+    ::ng-deep tag-input-form {
+        display: none !important;
+    }
+    
+    tag-input {
+        width: 100%;
+    }
+    
+    /////////////
+    .start-button {
+        background-color: #7ffe9f;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .stop-button {
+        background-color: rgba(118, 146, 254, 0.69);
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .cancel-button {
+        background-color: #af7541;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .audio-record {
+        background-image: url(./../../../../assets/images/icons/record.png);
+    }
+    
+    .audio-btn {
+        border-radius: 50%;
+        width: 43px;
+        height: 43px;
+    }
+    
+    .audio-upload {
+        background-image: url(./../../../../assets/images/icons/upload.png);
+    }

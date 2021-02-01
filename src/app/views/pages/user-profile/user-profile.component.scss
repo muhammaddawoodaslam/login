@@ -1,0 +1,106 @@
+.d_nav{
+    background:linear-gradient(262deg,#ff7854,#fd267d);
+    
+    .container{
+        max-width: 95%;
+    }
+  
+      #avatar {
+          img{
+              margin: 4% auto;
+              max-width: 50px;
+              max-height: 50px;
+              border-radius: 50%;
+              vertical-align:middle;
+          }
+  
+          i{
+              color: white;
+          }
+      }
+  
+      .title{
+          padding-left: 0;
+          margin-bottom: 0;
+          line-height: inherit;
+          font-size: 16px;
+          span{
+            font-weight: 300;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #FFFFFF;
+          }
+      }
+  
+      .button_x{
+          color: white;
+          font-size: 24px;
+      }
+      
+  }
+
+  .user-profile {
+      width: 50%;
+      margin: 0 auto;
+  }
+
+  .user-profile .header-cover {
+    background:linear-gradient(262deg,#ff7854,#fd267d);
+    // width: 50%;
+    // margin: 25px auto;
+    // border-radius: 5px;
+    height: 200px;
+
+  }
+
+  .edit_info {
+    margin-top: 10px;   
+    color: white;
+    background: linear-gradient(262deg,#ff7854,#fd267d);
+    font-size: 16px;
+    padding: 8px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    text-align: center;
+    -moz-border-radius: 50px 50px 50px 50px;
+    -webkit-border-radius: 50px 50px 50px 50px;
+    border: 0px solid #000000;
+    &:hover {
+      background-color: #555;
+    }
+  }
+
+
+    .edit_file{
+      margin: 5px;  
+      color: white;
+      background: linear-gradient(262deg,#ff7854,#fd267d);
+      font-size: 13px;
+      padding: 8px 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      text-align: center;
+      -moz-border-radius: 50px 50px 50px 50px;
+      -webkit-border-radius: 50px 50px 50px 50px;
+      border: 0px solid #000000;
+      &:hover {
+        background-color: #555;
+      }
+    }
+
+  .inputUpload {
+    font-size: 13px;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+
+  .fileSize {
+    font-size: 12px;
+  }
+
+  .modal-dialog {
+    max-width: 550px !important;
+  }

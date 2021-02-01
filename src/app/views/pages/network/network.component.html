@@ -1,0 +1,76 @@
+<div class="breadcrumb">
+    <h1>{{'network' | translate}}</h1>
+</div>
+
+<div class="separator-breadcrumb border-top"></div>
+<div class="networkHolder">
+        <div  class="card mb-4" *ngIf="state == 'networks'">
+        <!-- <div  class="card mb-4" *ngIf="false"> -->
+            <div  class="card-body">
+                <div  class="row">
+                    <div  class="col-md-6 mb-4" *ngFor="let cat of networks">
+                        <div  class="p-4 border border-light rounded d-flex align-items-center" (click)="getCategories(cat.key)">
+                            <i  [className]="iconClass(cat.key)"></i>
+                            <div>
+                                <h4  class="text-18 mb-1">{{cat.key | translate}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- <div  class="card mb-4" *ngIf="false"> -->
+    <div  class="card mb-4" *ngIf="state == 'categories'">
+            <div class="breadcrumb">
+                 <a (click)="changeCard('networks')">{{'back' | translate}} </a>  
+            </div>
+            <div  class="card-body">
+                <div  class="row">
+                    <div  class="col-md-6 mb-4" *ngFor="let cat of categories">
+                        <div  class="p-4 border border-light rounded d-flex align-items-center" (click)="getCommunities(cat.key)">
+                            <i  [className]="iconClass(cat.key)"></i>
+                            <div>
+                                <h4  class="text-18 mb-1">{{cat.key | translate}}</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="state == 'communities'" class="locationHolder">
+        <!-- <div *ngIf="true" class="locationHolder"> -->
+            <div  class="card mb-4">
+                <div class="breadcrumb">
+                    <a (click)="changeCard('categories')">{{'back' | translate}} </a>  
+                </div>
+                <div  class="card-body">
+                        <div  class="row">
+                            <div class="userData">
+                                <i class="i-Male-21 nav-icon"></i>
+                                <div class="name">
+                                    <span>Name</span>
+                                    <span>Adress Adress Adress</span>
+                                </div>
+                            </div>
+                            <button  class="btn btn-rounded btn-outline-primary btn-outline-email btn-block btn-icon-text">{{'edit' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        <div  class="card mb-4" >
+                    <div  class="card-body">
+                        <div  class="row">
+                            <div  class="col-md-6 mb-4" *ngFor="let com of communities">
+                                <div  class="p-4 border border-light rounded d-flex align-items-center">
+                                    <i  [className]="iconClass(com.key)"></i>
+                                    <div>
+                                        <h4  class="text-18 mb-1">{{com.key | translate}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div _ngcontent-mna-c136="" class="row"><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-First-Aid text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Healthcare</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-Building text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Real Estate</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-Business-ManWoman text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Influencers</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-Cloud-Laptop text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Legal Tech</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-University1 text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Religion</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="undefined"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Network</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-Book text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Education</h4></div></div></div><div _ngcontent-mna-c136="" class="col-md-6 mb-4"><div _ngcontent-mna-c136="" class="p-4 border border-light rounded d-flex align-items-center"><i _ngcontent-mna-c136="" class="i-Home-4 text-32 mr-3"></i><div _ngcontent-mna-c136=""><h4 _ngcontent-mna-c136="" class="text-18 mb-1">Smart Cities</h4></div></div></div></div> -->
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+</div>
